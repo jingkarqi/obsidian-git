@@ -16,3 +16,5 @@ yarn.lock
 .vscode
 
 .DS_Store
+src/lang/locales/1.json
+scan-setName.js
