@@ -232,7 +232,9 @@ const zhCn: Record<string, string> = {
     "Push on commit-and-sync description (pull enabled)": "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交和拉取，仍保留同名操作。",
     "Push on commit-and-sync description": "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交，仍保留同名操作。",
     "Pull on commit-and-sync description (push disabled)": "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交。",
-    "Pull on commit-and-sync description": "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交和推送。"
+    "Pull on commit-and-sync description": "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交和推送。",
+    "Source Control": "源代码控制",
+    "vault backup: {{date}}": "库备份: {{date}}",
 };
 
 export default zhCn;

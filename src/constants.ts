@@ -1,5 +1,6 @@
 import { Platform } from "obsidian";
 import type { ObsidianGitSettings } from "./types";
+import { t } from "./lang/i18n";
 export const DATE_FORMAT = "YYYY-MM-DD";
 export const DATE_TIME_FORMAT_MINUTES = `${DATE_FORMAT} HH:mm`;
 export const DATE_TIME_FORMAT_SECONDS = `${DATE_FORMAT} HH:mm:ss`;
@@ -9,8 +10,8 @@ export const GIT_LINE_AUTHORING_MOVEMENT_DETECTION_MINIMAL_LENGTH = 40;
 export const CONFLICT_OUTPUT_FILE = "conflict-files-obsidian-git.md";
 
 export const DEFAULT_SETTINGS: ObsidianGitSettings = {
-    commitMessage: "vault backup: {{date}}",
-    autoCommitMessage: "vault backup: {{date}}",
+    commitMessage: t("vault backup: {{date}}"),
+    autoCommitMessage: t("vault backup: {{date}}"),
     commitMessageScript: "",
     commitDateFormat: DATE_TIME_FORMAT_SECONDS,
     autoSaveInterval: 0,
@@ -66,7 +67,7 @@ export const DEFAULT_SETTINGS: ObsidianGitSettings = {
 
 export const SOURCE_CONTROL_VIEW_CONFIG = {
     type: "git-view",
-    name: "Source Control",
+    name: t("Source Control"),
     icon: "git-pull-request",
 };
 

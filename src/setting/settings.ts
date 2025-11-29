@@ -4,7 +4,7 @@ import {
     Notice,
     Platform,
     PluginSettingTab,
-    Setting,
+    Setting as ObsidianSetting,
     TextAreaComponent,
 } from "obsidian";
 import {
@@ -12,6 +12,7 @@ import {
     DEFAULT_SETTINGS,
     GIT_LINE_AUTHORING_MOVEMENT_DETECTION_MINIMAL_LENGTH,
 } from "src/constants";
+import zhCn from "src/lang/locales/zh-cn";
 import { IsomorphicGit } from "src/gitManager/isomorphicGit";
 import { SimpleGit } from "src/gitManager/simpleGit";
 import { previewColor } from "src/lineAuthor/lineAuthorProvider";
@@ -34,6 +35,30 @@ const FORMAT_STRING_REFERENCE_URL =
     "https://momentjs.com/docs/#/parsing/string-format/";
 const LINE_AUTHOR_FEATURE_WIKI_LINK =
     "https://publish.obsidian.md/git-doc/Line+Authoring";
+
+class Setting extends ObsidianSetting {
+    constructor(containerEl: HTMLElement) {
+        super(containerEl);
+    }
+    setName(name: string | DocumentFragment): this {
+        if (typeof name === "string") {
+            const translated = zhCn[name];
+            if (translated) {
+                return super.setName(translated);
+            }
+        }
+        return super.setName(name);
+    }
+    setDesc(desc: string | DocumentFragment): this {
+        if (typeof desc === "string") {
+            const translated = zhCn[desc];
+            if (translated) {
+                return super.setDesc(translated);
+            }
+        }
+        return super.setDesc(desc);
+    }
+}
 
 export class ObsidianGitSettingsTab extends PluginSettingTab {
     lineAuthorColorSettings: Map<"oldest" | "newest", Setting> = new Map();

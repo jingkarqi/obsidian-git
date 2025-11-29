@@ -340,7 +340,7 @@
                             >
                         </div>
                         <div class="tree-item-inner nav-folder-title-content">
-                            Staged Changes
+                            {t("Staged Changes")}
                         </div>
 
                         <div class="git-tools">
@@ -431,7 +431,7 @@
                         </div>
 
                         <div class="tree-item-inner nav-folder-title-content">
-                            Changes
+                            {t("Changes")}
                         </div>
                         <div class="git-tools">
                             <div class="buttons">
