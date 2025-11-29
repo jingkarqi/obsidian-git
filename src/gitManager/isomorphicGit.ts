@@ -12,6 +12,7 @@ import type {
 import git, { Errors, readBlob } from "isomorphic-git";
 import { Notice, requestUrl } from "obsidian";
 import type ObsidianGit from "../main";
+import { t } from "src/lang/i18n";
 import type {
     BranchInfo,
     FileStatusResult,
@@ -79,10 +80,12 @@ export class IsomorphicGit extends GitManager {
             },
             onAuthFailure: async () => {
                 new Notice(
-                    "Authentication failed. Please try with different credentials"
+                    t(
+                        "Authentication failed. Please try with different credentials"
+                    )
                 );
                 const username = await new GeneralModal(this.plugin, {
-                    placeholder: "Specify your username",
+                    placeholder: t("Specify your username"),
                 }).openAndGetResult();
                 if (username) {
                     const password = await new GeneralModal(this.plugin, {
@@ -150,7 +153,7 @@ export class IsomorphicGit extends GitManager {
         let notice: Notice | undefined;
         const timeout = window.setTimeout(() => {
             notice = new Notice(
-                "This takes longer: Getting status",
+                t("This takes longer: Getting status"),
                 this.noticeLength
             );
         }, 20000);
@@ -984,7 +987,7 @@ export class IsomorphicGit extends GitManager {
         let notice: Notice | undefined;
         const timeout = window.setTimeout(() => {
             notice = new Notice(
-                "This takes longer: Getting status",
+                t("This takes longer: Getting status"),
                 this.noticeLength
             );
         }, 20000);

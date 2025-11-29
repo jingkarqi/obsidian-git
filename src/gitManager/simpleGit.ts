@@ -16,6 +16,7 @@ import {
 import type { LineAuthorFollowMovement } from "src/lineAuthor/model";
 import { GeneralModal } from "src/ui/modals/generalModal";
 import type ObsidianGit from "../main";
+import { t } from "src/lang/i18n";
 import type {
     Blame,
     BlameCommit,
@@ -55,7 +56,7 @@ export class SimpleGit extends GitManager {
                         this.plugin.settings.basePath
                     );
                 } else if (!ignoreError) {
-                    new Notice("ObsidianGit: Base path does not exist");
+                    new Notice(t("ObsidianGit: Base path does not exist"));
                 }
             }
             this.absoluteRepoPath = basePath;

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { setIcon, TFile } from "obsidian";
     import { hoverPreview } from "obsidian-community-lib";
+    import { t } from "src/lang/i18n";
     import type { GitManager } from "src/gitManager/gitManager";
     import type { FileStatusResult } from "src/types";
     import {
@@ -113,7 +114,7 @@
                 {#if fileOpenableInObsidian(change.vaultPath, view.app)}
                     <div
                         data-icon="go-to-file"
-                        aria-label="Open File"
+                        aria-label={t("Open file")}
                         bind:this={buttons[0]}
                         onclick={open}
                         class="clickable-icon"
@@ -121,7 +122,7 @@
                 {/if}
                 <div
                     data-icon="minus"
-                    aria-label="Unstage"
+                    aria-label={t("Unstage")}
                     bind:this={buttons[1]}
                     onclick={unstage}
                     class="clickable-icon"

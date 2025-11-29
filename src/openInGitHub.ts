@@ -2,6 +2,7 @@ import type { Editor, TFile } from "obsidian";
 import { Notice } from "obsidian";
 import type { GitManager } from "./gitManager/gitManager";
 import { SimpleGit } from "./gitManager/simpleGit";
+import { t } from "./lang/i18n";
 
 export async function openLineInGitHub(
     editor: Editor,
@@ -11,7 +12,7 @@ export async function openLineInGitHub(
     const data = await getData(file, manager);
 
     if (data.result === "failure") {
-        new Notice(data.reason);
+        new Notice(t(data.reason));
         return;
     }
 
@@ -29,7 +30,7 @@ export async function openLineInGitHub(
             );
         }
     } else {
-        new Notice("It seems like you are not using GitHub");
+        new Notice(t("It seems like you are not using GitHub"));
     }
 }
 
@@ -37,7 +38,7 @@ export async function openHistoryInGitHub(file: TFile, manager: GitManager) {
     const data = await getData(file, manager);
 
     if (data.result === "failure") {
-        new Notice(data.reason);
+        new Notice(t(data.reason));
         return;
     }
 
@@ -48,7 +49,7 @@ export async function openHistoryInGitHub(file: TFile, manager: GitManager) {
             `https://github.com/${user}/${repo}/commits/${branch}/${filePath}`
         );
     } else {
-        new Notice("It seems like you are not using GitHub");
+        new Notice(t("It seems like you are not using GitHub"));
     }
 }
 

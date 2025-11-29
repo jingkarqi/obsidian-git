@@ -9,6 +9,7 @@ import { SimpleGit } from "./gitManager/simpleGit";
 import { getNewLeaf, splitRemoteBranch } from "./utils";
 import { GeneralModal } from "./ui/modals/generalModal";
 import type { DiffViewState } from "./types";
+import { t } from "./lang/i18n";
 
 export default class Tools {
     constructor(private readonly plugin: ObsidianGit) {}
@@ -146,14 +147,17 @@ export default class Tools {
             return;
         }
         const modal = new GeneralModal(this.plugin, {
-            placeholder: "push origin master",
+            placeholder: t("push origin master"),
             allowEmpty: false,
         });
         const command = await modal.openAndGetResult();
         if (command === undefined) return;
 
         this.plugin.promiseQueue.addTask(async () => {
-            const notice = new Notice(`Running '${command}'...`, 999_999);
+            const notice = new Notice(
+                t("Running '{command}'...", { command }),
+                999_999
+            );
 
             try {
                 const res = await gitManager.rawCommand(command);
