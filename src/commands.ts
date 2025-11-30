@@ -361,7 +361,9 @@ export function addCommmands(plugin: ObsidianGit) {
                         true
                     );
                     new Notice(
-                        t("Successfully deleted repository. Reloading plugin...")
+                        t(
+                            "Successfully deleted repository. Reloading plugin..."
+                        )
                     );
                     plugin.unloadPlugin();
                     await plugin.init({ fromReload: true });

@@ -6,19 +6,21 @@ const zhCn: Record<string, string> = {
     "Open file on GitHub": "在 GitHub 上打开文件",
     "Open file history on GitHub": "在 GitHub 上查看文件历史",
 
-    "Fetch": "获取",
+    Fetch: "获取",
     "Switch to remote branch": "切换到远程分支",
     "Add file to .gitignore": "将文件添加到 .gitignore",
     "Commit-and-sync and then close Obsidian": "提交并同步后关闭 Obsidian",
     "Commit-and-sync with specific message": "使用指定信息提交并同步",
     "Commit all changes": "提交所有更改",
     "Commit all changes with specific message": "使用指定信息提交所有更改",
-    "Commit": "提交",
+    Commit: "提交",
     "Commit staged": "提交已暂存内容",
     "Amend staged": "修订已暂存内容",
     "Commit with specific message": "使用指定信息提交",
     "Commit staged with specific message": "使用指定信息提交已暂存内容",
-    "Push": "推送",
+    commit: "提交",
+    "commit-and-sync": "提交并同步",
+    Push: "推送",
     "Stage current file": "暂存当前文件",
     "Stage all": "全部暂存",
     "Unstage current file": "取消暂存当前文件",
@@ -35,23 +37,27 @@ const zhCn: Record<string, string> = {
     "Pause/Resume automatic routines": "暂停/恢复自动流程",
     "Raw command": "原始命令",
     "Toggle line author information": "切换行作者信息",
-    "Successfully deleted repository. Reloading plugin...": "已成功删除仓库。正在重新加载插件...",
+    "Successfully deleted repository. Reloading plugin...":
+        "已成功删除仓库。正在重新加载插件...",
     "No repository found": "未找到仓库",
     "Too many changes to display": "更改过多，无法显示",
     "Discarded all changes in tracked files.": "已丢弃跟踪文件中的所有更改。",
     "Discarded all files.": "已丢弃所有文件。",
     "Paused automatic routines.": "已暂停自动流程。",
     "Resumed automatic routines.": "已恢复自动流程。",
-    "Language": "语言",
+    Language: "语言",
     "Select the language used for the plugin UI.": "选择插件界面的显示语言。",
-    "Language setting updated. Please reload the plugin or Obsidian if texts do not refresh automatically.": "语言设置已更新。如界面未立即刷新，请重新加载插件或重启 Obsidian。",
+    "Language setting updated. Please reload the plugin or Obsidian if texts do not refresh automatically.":
+        "语言设置已更新。如界面未立即刷新，请重新加载插件或重启 Obsidian。",
     "System default": "跟随系统",
-    "English": "英语",
-    "YES": "是",
-    "NO": "否",
-    "Do you really want to delete the repository (.git directory)? plugin action cannot be undone.": "确定要删除当前仓库（.git 目录）吗？此操作无法撤销。",
+    English: "英语",
+    YES: "是",
+    NO: "否",
+    "Do you really want to delete the repository (.git directory)? plugin action cannot be undone.":
+        "确定要删除当前仓库（.git 目录）吗？此操作无法撤销。",
     "It seems like you are not using GitHub": "看起来你并未使用 GitHub。",
-    "Git is not ready. When all settings are correct you can configure commit-sync, etc.": "Git 尚未就绪。请先调整设置后再配置自动提交/同步。",
+    "Git is not ready. When all settings are correct you can configure commit-sync, etc.":
+        "Git 尚未就绪。请先调整设置后再配置自动提交/同步。",
     "Failed to get remote url of submodule": "无法获取子模块的远程地址。",
     "Remote branch is not configured": "尚未配置远程分支。",
     "Failed to get current branch name": "无法获取当前分支名称。",
@@ -61,13 +67,16 @@ const zhCn: Record<string, string> = {
     "Initialized new repo": "已初始化新仓库。",
     "Aborted clone": "已取消克隆。",
     "Invalid depth. Aborting clone.": "克隆深度无效，操作已中止。",
-    "Cloning new repo into \"{dir}\"": "正在将新仓库克隆到 \"{dir}\"。",
+    'Cloning new repo into "{dir}"': '正在将新仓库克隆到 "{dir}"。',
     "Cloned new repo.": "已完成仓库克隆。",
     "Please restart Obsidian": "请重新启动 Obsidian。",
-    "Can't find a valid git repository. Please create one via the given command or clone an existing repo.": "未找到有效的 Git 仓库。请通过下方命令创建或克隆一个仓库。",
-    "Auto backup: Please enter a custom commit message. Leave empty to abort": "自动备份：请输入自定义提交信息，留空则取消。",
-    "No upstream branch is set. Please select one.": "尚未设置上游分支，请先选择。",
-    "Aborted": "已取消。",
+    "Can't find a valid git repository. Please create one via the given command or clone an existing repo.":
+        "未找到有效的 Git 仓库。请通过下方命令创建或克隆一个仓库。",
+    "Auto backup: Please enter a custom commit message. Leave empty to abort":
+        "自动备份：请输入自定义提交信息，留空则取消。",
+    "No upstream branch is set. Please select one.":
+        "尚未设置上游分支，请先选择。",
+    Aborted: "已取消。",
     "Open Git source control": "打开 Git 源代码控制",
     "Git: Stage": "Git：暂存",
     "Git: Unstage": "Git：取消暂存",
@@ -76,70 +85,98 @@ const zhCn: Record<string, string> = {
     "Show in system explorer": "在系统文件管理器中显示",
     "Git View": "Git 视图",
     "ObsidianGit: Base path does not exist": "ObsidianGit：基础路径不存在。",
-    "Authentication failed. Please try with different credentials": "身份验证失败，请尝试其他凭据。",
+    "Authentication failed. Please try with different credentials":
+        "身份验证失败，请尝试其他凭据。",
     "This takes longer: Getting status": "操作耗时较长：正在获取状态...",
-    "Debug information copied to clipboard. May contain sensitive information!": "调试信息已复制到剪贴板，可能包含敏感内容！",
+    "Debug information copied to clipboard. May contain sensitive information!":
+        "调试信息已复制到剪贴板，可能包含敏感内容！",
     "Running '{command}'...": "正在运行 '{command}'...",
-    "Not supported files will be opened by default app!": "不受支持的文件将使用系统默认程序打开！",
-    "Untracked": "未跟踪",
+    "Not supported files will be opened by default app!":
+        "不受支持的文件将使用系统默认程序打开！",
+    Untracked: "未跟踪",
     "Working Dir": "工作区",
-    "Index": "索引",
-    "Save": "保存",
+    Index: "索引",
+    Save: "保存",
     "Specify your username": "请输入用户名",
     "Select a remote": "选择远程仓库",
     "Select branch to checkout": "选择要检出的分支",
-    "Type your message and select optional the version with the added date.": "输入提交信息，可选择附带当前日期的版本。",
-    "Does your remote repo contain a {configDir} directory at the root?": "远程仓库根目录下是否包含 {configDir} 目录？",
-    "This branch isn't merged into HEAD. Force delete?": "该分支尚未合并到 HEAD，是否强制删除？",
-    "Select or create a new remote by typing its name and selecting it": "输入名称并选择即可选取或新建远程仓库",
-    "Select or create a new remote branch by typing its name and selecting it": "输入名称并选择即可选取或新建远程分支",
+    "Type your message and select optional the version with the added date.":
+        "输入提交信息，可选择附带当前日期的版本。",
+    "Does your remote repo contain a {configDir} directory at the root?":
+        "远程仓库根目录下是否包含 {configDir} 目录？",
+    "This branch isn't merged into HEAD. Force delete?":
+        "该分支尚未合并到 HEAD，是否强制删除？",
+    "Select or create a new remote by typing its name and selecting it":
+        "输入名称并选择即可选取或新建远程仓库",
+    "Select or create a new remote branch by typing its name and selecting it":
+        "输入名称并选择即可选取或新建远程分支",
     "Change layout": "切换布局",
-    "Refresh": "刷新",
-    "Clear": "清除",
+    Refresh: "刷新",
+    Clear: "清除",
     "Staged Changes": "已暂存的更改",
-    "Changes": "更改",
+    Changes: "更改",
     "Recently Pulled Files": "最近拉取的文件",
-    "Discard": "丢弃",
-    "Stage": "暂存",
+    Discard: "丢弃",
+    Stage: "暂存",
     "Open file": "打开文件",
     "And {count} more files": "以及另外 {count} 个文件",
-    "Specify custom commit message on auto commit": "为自动提交指定自定义提交信息",
-    "Specify custom commit message on auto commit-and-sync": "为自动提交并同步指定自定义提交信息",
+    "Specify custom commit message on auto commit":
+        "为自动提交指定自定义提交信息",
+    "Specify custom commit message on auto commit-and-sync":
+        "为自动提交并同步指定自定义提交信息",
     "Oldest age in coloring": "着色的最大年龄",
-    "Set last saved timestamp to last commit": "将上次保存时间更新为最后一次提交",
-    "Updated": "已更新",
-    "Automatically refresh source control view on file changes": "文件变动时自动刷新源代码控制视图",
-    "Set last save timestamp to latest commit": "将最近保存时间设为最新提交时间",
-    "Show commit authoring information next to each line": "在每行显示提交作者信息",
-    "Available placeholders: {{date}} (see below), {{hostname}} (see below), {{numFiles}} (number of changed files in the commit) and {{files}} (changed files in commit message).": "可用占位符：{{date}}（见下文）、{{hostname}}（见下文）、{{numFiles}}（此次提交的更改文件数）以及 {{files}}（在正文列出更改的文件）。",
-    "Commit-and-sync changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)": "每 X 分钟执行一次提交并同步。设为 0（默认）可禁用。（详细配置见下方设置。）",
-    "Auto {action} after stopping file edits description": "要求 {action} 间隔不为 0。启用后，在停止编辑 {minutes} 后会自动 {action}，同时在编辑期间不会自动执行；关闭则与最近一次编辑无关。",
-    "Auto {action} after latest commit description": "启用后，会将最近一次 {action} 的时间戳同步为最新提交的时间，减少手动提交时的自动 {action} 频率。",
-    "Auto commit only staged description": "启用后仅对已暂存的文件执行自动提交；禁用则对所有更改的文件提交。",
-    "Auto commit-and-sync only staged description": "启用后仅对已暂存的文件执行自动提交并同步；禁用则对所有更改的文件执行。",
-    "Push on commit-and-sync description (pull enabled)": "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交和拉取，仍保留同名操作。",
-    "Push on commit-and-sync description": "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交，仍保留同名操作。",
-    "Pull on commit-and-sync description (push disabled)": "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交。",
-    "Pull on commit-and-sync description": "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交和推送。",
+    "Set last saved timestamp to last commit":
+        "将上次保存时间更新为最后一次提交",
+    Updated: "已更新",
+    "Automatically refresh source control view on file changes":
+        "文件变动时自动刷新源代码控制视图",
+    "Set last save timestamp to latest commit":
+        "将最近保存时间设为最新提交时间",
+    "Show commit authoring information next to each line":
+        "在每行显示提交作者信息",
+    '<a href="https://publish.obsidian.md/git-doc/Line+Authoring">Feature guide and quick examples</a></br> The commit hash, author name and authoring date can all be individually toggled.</br>Hide everything, to only show the age-colored sidebar.':
+        '<a href="https://publish.obsidian.md/git-doc/Line+Authoring">功能指南与快速示例</a></br>提交哈希、作者姓名和作者时间都可以单独开关。</br>全部隐藏时，仅显示按时间着色的侧边栏。',
+    "Available placeholders: {{date}} (see below), {{hostname}} (see below), {{numFiles}} (number of changed files in the commit) and {{files}} (changed files in commit message).":
+        "可用占位符：{{date}}（见下文）、{{hostname}}（见下文）、{{numFiles}}（此次提交的更改文件数）以及 {{files}}（在正文列出更改的文件）。",
+    "Commit-and-sync changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)":
+        "每 X 分钟执行一次提交并同步。设为 0（默认）可禁用。（详细配置见下方设置。）",
+    "Auto {action} after stopping file edits description":
+        "要求 {action} 间隔不为 0。启用后，在停止编辑 {minutes} 后会自动 {action}，同时在编辑期间不会自动执行；关闭则与最近一次编辑无关。",
+    "Requires the {action} interval not to be 0. If turned on, do auto {action} every {minutes} after stopping file edits. This also prevents auto {action} while editing a file. If turned off, it's independent from the last file edit.":
+        "{action} 间隔必须大于 0。启用后将在停止编辑 {minutes} 后自动执行 {action}，并且在编辑时暂停自动 {action}；关闭后与最近一次编辑无关。",
+    "Auto {action} after latest commit description":
+        "启用后，会将最近一次 {action} 的时间戳同步为最新提交的时间，减少手动提交时的自动 {action} 频率。",
+    "Auto commit only staged description":
+        "启用后仅对已暂存的文件执行自动提交；禁用则对所有更改的文件提交。",
+    "Auto commit-and-sync only staged description":
+        "启用后仅对已暂存的文件执行自动提交并同步；禁用则对所有更改的文件执行。",
+    "Push on commit-and-sync description (pull enabled)":
+        "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交和拉取，仍保留同名操作。",
+    "Push on commit-and-sync description":
+        "大多数情况下提交后需要推送。关闭此项会让“提交并同步”仅执行提交，仍保留同名操作。",
+    "Pull on commit-and-sync description (push disabled)":
+        "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交。",
+    "Pull on commit-and-sync description":
+        "“提交并同步”会同时拉取。关闭此项后，该动作仅执行提交和推送。",
 
-
-    "Automatic": "自动化设置",
+    Automatic: "自动化设置",
     "Commit message": "提交信息",
-    "Pull": "拉取",
+    Pull: "拉取",
     "Commit-and-sync": "提交并同步",
     "Line author information": "行作者信息 (Line Author)",
     "History view": "历史视图",
     "Source control view": "源代码控制视图",
-    "Miscellaneous": "杂项",
+    Miscellaneous: "杂项",
     "Authentication/commit author": "认证/提交作者",
     "Commit author": "提交作者",
-    "Advanced": "高级",
-    "Support": "支持",
+    Advanced: "高级",
+    Support: "支持",
     "Split timers for automatic commit and sync": "拆分自动提交和同步的计时器",
     "Auto commit interval (minutes)": "自动提交间隔（分钟）",
     "Auto commit-and-sync interval (minutes)": "自动提交并同步间隔（分钟）",
     "Auto commit after stopping file edits": "停止编辑文件后自动提交",
-    "Auto commit-and-sync after stopping file edits": "停止编辑文件后自动提交并同步",
+    "Auto commit-and-sync after stopping file edits":
+        "停止编辑文件后自动提交并同步",
     "Auto commit after latest commit": "最后一次提交后自动提交",
     "Auto commit-and-sync after latest commit": "最后一次提交后自动提交并同步",
     "Auto push interval (minutes)": "自动推送间隔（分钟）",
@@ -150,10 +187,13 @@ const zhCn: Record<string, string> = {
     "Commit message on auto commit-and-sync": "自动提交并同步时的提交信息",
     "Commit message on manual commit": "手动提交时的提交信息",
     "Commit message script": "生成提交信息的脚本",
+    'Specify custom date format. E.g. "YYYY-MM-DD HH:mm:ss. See <a href="https://momentjs.com">Moment.js</a> for more formats.':
+        '指定自定义日期格式，例如 "YYYY-MM-DD HH:mm:ss"。更多格式请参阅 <a href="https://momentjs.com">Moment.js</a> 文档。',
     "{{date}} placeholder format": "{{date}} 占位符日期格式",
     "{{hostname}} placeholder replacement": "{{hostname}} 占位符替换值",
     "Preview commit message": "预览提交信息",
-    "List filenames affected by commit in the commit body": "在提交说明中列出受影响的文件名",
+    "List filenames affected by commit in the commit body":
+        "在提交说明中列出受影响的文件名",
     "Merge strategy": "合并策略",
     "Pull on startup": "启动时拉取",
     "Push on commit-and-sync": "提交并同步时推送",
@@ -168,7 +208,8 @@ const zhCn: Record<string, string> = {
     "Show status bar": "显示状态栏",
     "File menu integration": "集成到文件菜单",
     "Show branch status bar": "在状态栏显示分支",
-    "Show the count of modified files in the status bar": "在状态栏显示已修改文件数量",
+    "Show the count of modified files in the status bar":
+        "在状态栏显示已修改文件数量",
     "Password/Personal access token": "密码/个人访问令牌 (PAT)",
     "Author name for commit": "提交时的作者姓名",
     "Author email for commit": "提交时的作者邮箱",
@@ -179,10 +220,12 @@ const zhCn: Record<string, string> = {
     "Additional PATH environment variable paths": "额外的 PATH 环境变量路径",
     "Reload with new environment variables": "使用新环境变量重载",
     "Custom base path (Git repository path)": "自定义根路径（Git 仓库路径）",
-    "Custom Git directory path (Instead of '.git')": "自定义 Git 目录路径（代替 .git）",
+    "Custom Git directory path (Instead of '.git')":
+        "自定义 Git 目录路径（代替 .git）",
     "Disable on this device": "在此设备上禁用",
-    "Donate": "捐赠",
-    "Follow movement and copies across files and commits": "跨文件和提交追踪移动和复制",
+    Donate: "捐赠",
+    "Follow movement and copies across files and commits":
+        "跨文件和提交追踪移动和复制",
     "Show commit hash": "显示提交哈希值",
     "Author name display": "作者姓名显示方式",
     "Authoring date display": "作者日期显示方式",
@@ -191,50 +234,94 @@ const zhCn: Record<string, string> = {
     "Text color": "文本颜色",
     "Ignore whitespace and newlines in changes": "忽略变更中的空白和换行符",
 
-    "Enable to use one interval for commit and another for sync.": "开启后将分别设置提交和同步的时间间隔。",
-    "Commit changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)": "每 X 分钟自动提交变更。设为 0（默认）以禁用。（查看下方设置以获取更多配置！）",
-    "Commit and sync changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)": "每 X 分钟自动提交并同步变更。设为 0（默认）以禁用。（查看下方设置以获取更多配置！）",
-    "If turned on, sets last auto commit timestamp to the latest commit timestamp. This reduces the frequency of auto commit when doing manual commits.": "开启后，将最后一次自动提交的时间戳更新为最新一次提交的时间戳。这可以减少手动提交后自动提交的频率。",
-    "If turned on, sets last auto commit-and-sync timestamp to the latest commit timestamp. This reduces the frequency of auto commit-and-sync when doing manual commits.": "开启后，将最后一次自动提交并同步的时间戳更新为最新一次提交的时间戳。这可以减少手动提交后自动提交并同步的频率。",
-    "Push commits every X minutes. Set to 0 (default) to disable.": "每 X 分钟推送一次提交。设为 0（默认）以禁用。",
-    "Pull changes every X minutes. Set to 0 (default) to disable.": "每 X 分钟拉取一次变更。设为 0（默认）以禁用。",
-    "If turned on, only staged files are committed on commit. If turned off, all changed files are committed.": "开启后，在自动提交时仅提交已暂存的文件。关闭后，所有变更的文件都会被提交。",
-    "If turned on, only staged files are committed on commit-and-sync. If turned off, all changed files are committed.": "开启后，在自动提交并同步时仅提交已暂存的文件。关闭后，所有变更的文件都会被提交。",
-    "You will get a pop up to specify your message.": "将会弹出窗口让你输入提交信息。",
-    "Available placeholders: {{date}} (see below)": "可用占位符：{{date}}（见下文）",
-    "A script that is run using 'sh -c' to generate the commit message. May be used to generate commit messages using AI tools. Available placeholders: {{hostname}}, {{date}}.": "使用 'sh -c' 运行该脚本以生成提交信息。可用于通过 AI 工具生成提交信息。可用占位符：{{hostname}}, {{date}}。",
+    "Enable to use one interval for commit and another for sync.":
+        "开启后将分别设置提交和同步的时间间隔。",
+    "Commit changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)":
+        "每 X 分钟自动提交变更。设为 0（默认）以禁用。（查看下方设置以获取更多配置！）",
+    "Commit and sync changes every X minutes. Set to 0 (default) to disable. (See below setting for further configuration!)":
+        "每 X 分钟自动提交并同步变更。设为 0（默认）以禁用。（查看下方设置以获取更多配置！）",
+    "If turned on, sets last auto commit timestamp to the latest commit timestamp. This reduces the frequency of auto commit when doing manual commits.":
+        "开启后，将最后一次自动提交的时间戳更新为最新一次提交的时间戳。这可以减少手动提交后自动提交的频率。",
+    "If turned on, sets last auto commit-and-sync timestamp to the latest commit timestamp. This reduces the frequency of auto commit-and-sync when doing manual commits.":
+        "开启后，将最后一次自动提交并同步的时间戳更新为最新一次提交的时间戳。这可以减少手动提交后自动提交并同步的频率。",
+    "Push commits every X minutes. Set to 0 (default) to disable.":
+        "每 X 分钟推送一次提交。设为 0（默认）以禁用。",
+    "Pull changes every X minutes. Set to 0 (default) to disable.":
+        "每 X 分钟拉取一次变更。设为 0（默认）以禁用。",
+    "If turned on, only staged files are committed on commit. If turned off, all changed files are committed.":
+        "开启后，在自动提交时仅提交已暂存的文件。关闭后，所有变更的文件都会被提交。",
+    "If turned on, only staged files are committed on commit-and-sync. If turned off, all changed files are committed.":
+        "开启后，在自动提交并同步时仅提交已暂存的文件。关闭后，所有变更的文件都会被提交。",
+    "You will get a pop up to specify your message.":
+        "将会弹出窗口让你输入提交信息。",
+    "Available placeholders: {{date}} (see below)":
+        "可用占位符：{{date}}（见下文）",
+    "A script that is run using 'sh -c' to generate the commit message. May be used to generate commit messages using AI tools. Available placeholders: {{hostname}}, {{date}}.":
+        "使用 'sh -c' 运行该脚本以生成提交信息。可用于通过 AI 工具生成提交信息。可用占位符：{{hostname}}, {{date}}。",
     "Specify custom hostname for every device.": "为每台设备指定自定义主机名。",
-    "Decide how to integrate commits from your remote branch into your local branch.": "决定如何将远程分支的提交集成到本地分支。",
-    "Automatically pull commits when Obsidian starts.": "Obsidian 启动时自动拉取提交。",
-    "Commit-and-sync with default settings means staging everything -> committing -> pulling -> pushing. Ideally this is a single action that you do regularly to keep your local and remote repository in sync.": "默认设置下的“提交并同步”意味着：暂存所有更改 -> 提交 -> 拉取 -> 推送。理想情况下，这是你为了保持本地和远程仓库同步而定期执行的单一操作。",
-    "Most of the time you want to push after committing. Turning this off turns a commit-and-sync action into commit only. It will still be called commit-and-sync.": "大多数情况下，你会希望在提交后推送。关闭此选项会将“提交并同步”操作变为“仅提交”。但它仍然会被称为“提交并同步”。",
-    "Most of the time you want to push after committing. Turning this off turns a commit-and-sync action into commit and pull only. It will still be called commit-and-sync.": "大多数情况下，你会希望在提交后推送。关闭此选项会将“提交并同步”操作变为“仅提交并拉取”。但它仍然会被称为“提交并同步”。",
-    "On commit-and-sync, pull commits as well. Turning this off turns a commit-and-sync action into commit only.": "在提交并同步时，同时也拉取提交。关闭此选项会将“提交并同步”操作变为“仅提交”。",
-    "On commit-and-sync, pull commits as well. Turning this off turns a commit-and-sync action into commit and push only.": "在提交并同步时，同时也拉取提交。关闭此选项会将“提交并同步”操作变为“仅提交并推送”。",
-    "Show the author of the commit in the history view.": "在历史视图中显示提交的作者。",
-    "Show the date of the commit in the history view. The {{date}} placeholder format is used to display the date.": "在历史视图中显示提交日期。使用 {{date}} 占位符格式来显示日期。",
-    "On slower machines this may cause lags. If so, just disable this option.": "在较慢的机器上这可能会导致卡顿。如果是这样，请禁用此选项。",
-    "Milliseconds to wait after file change before refreshing the Source Control View.": "文件变更后刷新源代码控制视图前的等待时间（毫秒）。",
-    'Set the style for the diff view. Note that the actual diff in "Split" mode is not generated by Git, but the editor itself instead so it may differ from the diff generated by Git. One advantage of this is that you can edit the text in that view.': '设置差异视图的样式。注意，“Split”（拆分）模式下的实际差异并非由 Git 生成，而是由编辑器生成，因此可能与 Git 生成的差异不同。这样做的一个优点是你可以在该视图中编辑文本。',
-    "Disable informative notifications for git operations to minimize distraction (refer to status bar for updates)": "禁用 Git 操作的普通提示通知以尽量减少干扰（请参阅状态栏以获取更新）。",
-    "Disable error notifications of any kind to minimize distraction (refer to status bar for updates)": "禁用任何类型的错误通知以尽量减少干扰（请参阅状态栏以获取更新）。",
-    "Don't show notifications when there are no changes to commit or push.": "当没有变更需要提交或推送时，不显示通知。",
-    "Obsidian must be restarted for the changes to take affect.": "必须重启 Obsidian 才能使更改生效。",
-    "Removing previously added environment variables will not take effect until Obsidian is restarted.": "删除之前添加的环境变量直到 Obsidian 重启后才会生效。",
-    'Requires restart of Obsidian to take effect. Use "\\" instead of "/" on Windows.': '需要重启 Obsidian 才能生效。Windows 系统请使用 "\\" 代替 "/"。',
-    'Add "Stage", "Unstage" and "Add to .gitignore" actions to the file menu.': '将 "Stage"（暂存）、"Unstage"（取消暂存）和 "Add to .gitignore"（添加到 .gitignore）操作添加到文件菜单。',
-    "Type in your password. You won't be able to see it again.": "输入你的密码。你将无法再次看到它。",
-    "These settings usually don't need to be changed, but may be required for special setups.": "这些设置通常不需要更改，但在特殊设置下可能需要。",
-    '"Commit-and-sync" and "pull" takes care of submodules. Missing features: Conflicted files, count of pulled/pushed/committed files. Tracking branch needs to be set for each submodule.': '"提交并同步" 和 "拉取" 会处理子模块。缺失功能：冲突文件、拉取/推送/提交文件的计数。需要为每个子模块设置跟踪分支。',
-    "Whenever a checkout happens on the root repository, recurse the checkout on the submodules (if the branches exist)": "每当根仓库发生检出（checkout）时，递归检出子模块（如果分支存在）。",
-    "Use each line for a new environment variable in the format KEY=VALUE .": "每行使用一个格式为 KEY=VALUE 的新环境变量。",
+    "Decide how to integrate commits from your remote branch into your local branch.":
+        "决定如何将远程分支的提交集成到本地分支。",
+    "Automatically pull commits when Obsidian starts.":
+        "Obsidian 启动时自动拉取提交。",
+    "Commit-and-sync with default settings means staging everything -> committing -> pulling -> pushing. Ideally this is a single action that you do regularly to keep your local and remote repository in sync.":
+        "默认设置下的“提交并同步”意味着：暂存所有更改 -> 提交 -> 拉取 -> 推送。理想情况下，这是你为了保持本地和远程仓库同步而定期执行的单一操作。",
+    "Most of the time you want to push after committing. Turning this off turns a commit-and-sync action into commit only. It will still be called commit-and-sync.":
+        "大多数情况下，你会希望在提交后推送。关闭此选项会将“提交并同步”操作变为“仅提交”。但它仍然会被称为“提交并同步”。",
+    "Most of the time you want to push after committing. Turning this off turns a commit-and-sync action into commit and pull only. It will still be called commit-and-sync.":
+        "大多数情况下，你会希望在提交后推送。关闭此选项会将“提交并同步”操作变为“仅提交并拉取”。但它仍然会被称为“提交并同步”。",
+    "On commit-and-sync, pull commits as well. Turning this off turns a commit-and-sync action into commit only.":
+        "在提交并同步时，同时也拉取提交。关闭此选项会将“提交并同步”操作变为“仅提交”。",
+    "On commit-and-sync, pull commits as well. Turning this off turns a commit-and-sync action into commit and push only.":
+        "在提交并同步时，同时也拉取提交。关闭此选项会将“提交并同步”操作变为“仅提交并推送”。",
+    "Show the author of the commit in the history view.":
+        "在历史视图中显示提交的作者。",
+    "Show the date of the commit in the history view. The {{date}} placeholder format is used to display the date.":
+        "在历史视图中显示提交日期。使用 {{date}} 占位符格式来显示日期。",
+    "On slower machines this may cause lags. If so, just disable this option.":
+        "在较慢的机器上这可能会导致卡顿。如果是这样，请禁用此选项。",
+    "Milliseconds to wait after file change before refreshing the Source Control View.":
+        "文件变更后刷新源代码控制视图前的等待时间（毫秒）。",
+    'Set the style for the diff view. Note that the actual diff in "Split" mode is not generated by Git, but the editor itself instead so it may differ from the diff generated by Git. One advantage of this is that you can edit the text in that view.':
+        "设置差异视图的样式。注意，“Split”（拆分）模式下的实际差异并非由 Git 生成，而是由编辑器生成，因此可能与 Git 生成的差异不同。这样做的一个优点是你可以在该视图中编辑文本。",
+    "Disable informative notifications for git operations to minimize distraction (refer to status bar for updates)":
+        "禁用 Git 操作的普通提示通知以尽量减少干扰（请参阅状态栏以获取更新）。",
+    "Disable error notifications of any kind to minimize distraction (refer to status bar for updates)":
+        "禁用任何类型的错误通知以尽量减少干扰（请参阅状态栏以获取更新）。",
+    "Don't show notifications when there are no changes to commit or push.":
+        "当没有变更需要提交或推送时，不显示通知。",
+    "Obsidian must be restarted for the changes to take affect.":
+        "必须重启 Obsidian 才能使更改生效。",
+    "Removing previously added environment variables will not take effect until Obsidian is restarted.":
+        "删除之前添加的环境变量直到 Obsidian 重启后才会生效。",
+    'Requires restart of Obsidian to take effect. Use "\\" instead of "/" on Windows.':
+        '需要重启 Obsidian 才能生效。Windows 系统请使用 "\\" 代替 "/"。',
+    'Add "Stage", "Unstage" and "Add to .gitignore" actions to the file menu.':
+        '将 "Stage"（暂存）、"Unstage"（取消暂存）和 "Add to .gitignore"（添加到 .gitignore）操作添加到文件菜单。',
+    "Type in your password. You won't be able to see it again.":
+        "输入你的密码。你将无法再次看到它。",
+    "These settings usually don't need to be changed, but may be required for special setups.":
+        "这些设置通常不需要更改，但在特殊设置下可能需要。",
+    '"Commit-and-sync" and "pull" takes care of submodules. Missing features: Conflicted files, count of pulled/pushed/committed files. Tracking branch needs to be set for each submodule.':
+        '"提交并同步" 和 "拉取" 会处理子模块。缺失功能：冲突文件、拉取/推送/提交文件的计数。需要为每个子模块设置跟踪分支。',
+    "Whenever a checkout happens on the root repository, recurse the checkout on the submodules (if the branches exist)":
+        "每当根仓库发生检出（checkout）时，递归检出子模块（如果分支存在）。",
+    "Use each line for a new environment variable in the format KEY=VALUE .":
+        "每行使用一个格式为 KEY=VALUE 的新环境变量。",
     "Use each line for one path": "每行一个路径。",
-    'Sets the relative path to the vault from which the Git binary should be executed.\n             Mostly used to set the path to the Git repository, which is only required if the Git repository is below the vault root directory. Use "\\" instead of "/" on Windows.\n            ': '设置执行 Git 二进制文件的库相对路径。\n             主要用于设置 Git 仓库路径，仅当 Git 仓库位于库根目录之下时才需要。Windows 系统请使用 "\\" 代替 "/"。',
-    "Disables the plugin on this device. This setting is not synced.": "在此设备上禁用插件。此设置不会被同步。",
-    "If you like this Plugin, consider donating to support continued development.": "如果你喜欢这个插件，请考虑捐赠以支持持续开发。",
+    'Sets the relative path to the vault from which the Git binary should be executed.\n             Mostly used to set the path to the Git repository, which is only required if the Git repository is below the vault root directory. Use "\\" instead of "/" on Windows.\n            ':
+        '设置执行 Git 二进制文件的库相对路径。\n             主要用于设置 Git 仓库路径，仅当 Git 仓库位于库根目录之下时才需要。Windows 系统请使用 "\\" 代替 "/"。',
+    "Disables the plugin on this device. This setting is not synced.":
+        "在此设备上禁用插件。此设置不会被同步。",
+    "If you like this Plugin, consider donating to support continued development.":
+        "如果你喜欢这个插件，请考虑捐赠以支持持续开发。",
     "Only available on desktop currently.": "目前仅桌面端可用。",
     "If and how the author is displayed": "是否显示作者以及如何显示",
-    "If and how the date and time of authoring the line is displayed": "是否显示行作者的日期和时间以及如何显示",
+    "If and how the date and time of authoring the line is displayed":
+        "是否显示行作者的日期和时间以及如何显示",
+    "Disable error notifications of any kind to minimize distraction (refer to status bar for updates).":
+        "关闭所有类型的错误通知以最大程度减少干扰（如需了解更新，请查看状态栏）。",
+    "Disable informative notifications for git operations to minimize distraction (refer to status bar for updates).":
+        "关闭 Git 操作的提示性通知，以最大程度减少干扰（如需了解更新，请查看状态栏）。",
 };
 
 export default zhCn;

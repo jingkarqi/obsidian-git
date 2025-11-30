@@ -61,7 +61,7 @@ export function t(key: string, values?: TranslationValues): string {
 
     if (!values) return template;
 
-    return template.replace(/\{(\w+)\}/g, (match, token) => {
+    return template.replace(/\{(\w+)\}/g, (match: string, token: string) => {
         const replacement = values[token];
         if (replacement === undefined || replacement === null) return match;
         return String(replacement);

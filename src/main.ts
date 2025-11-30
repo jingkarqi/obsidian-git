@@ -681,7 +681,10 @@ export default class ObsidianGit extends Plugin {
                 const yesOption = t("YES");
                 const modal = new GeneralModal(this, {
                     options: [noOption, yesOption],
-                    placeholder: t("Does your remote repo contain a {configDir} directory at the root?", { configDir: this.app.vault.configDir }),
+                    placeholder: t(
+                        "Does your remote repo contain a {configDir} directory at the root?",
+                        { configDir: this.app.vault.configDir }
+                    ),
                     onlySelection: true,
                 });
                 const containsConflictDir = await modal.openAndGetResult();
@@ -954,7 +957,7 @@ export default class ObsidianGit extends Plugin {
                     (fromAuto && this.settings.customMessageOnAutoBackup) ||
                     requestCustomMessage
                 ) {
-                        if (!this.settings.disablePopups && fromAuto) {
+                    if (!this.settings.disablePopups && fromAuto) {
                         new Notice(
                             t(
                                 "Auto backup: Please enter a custom commit message. Leave empty to abort"
@@ -1289,9 +1292,7 @@ export default class ObsidianGit extends Plugin {
             return true;
         }
         if (!(await this.gitManager.branchInfo()).tracking) {
-            new Notice(
-                t("No upstream branch is set. Please select one.")
-            );
+            new Notice(t("No upstream branch is set. Please select one."));
             return await this.setUpstreamBranch();
         }
         return true;
@@ -1425,8 +1426,9 @@ I strongly recommend to use "Source mode" for viewing the conflicted files. For 
 
         const nameModal = new GeneralModal(this, {
             options: remotes,
-            placeholder:
-                t("Select or create a new remote by typing its name and selecting it"),
+            placeholder: t(
+                "Select or create a new remote by typing its name and selecting it"
+            ),
         });
         const remoteName = await nameModal.openAndGetResult();
 
@@ -1461,8 +1463,9 @@ I strongly recommend to use "Source mode" for viewing the conflicted files. For 
 
         const nameModal = new GeneralModal(this, {
             options: remotes,
-            placeholder:
-                t("Select or create a new remote by typing its name and selecting it"),
+            placeholder: t(
+                "Select or create a new remote by typing its name and selecting it"
+            ),
         });
         const remoteName =
             selectedRemote ?? (await nameModal.openAndGetResult());
@@ -1474,8 +1477,9 @@ I strongly recommend to use "Source mode" for viewing the conflicted files. For 
                 await this.gitManager.getRemoteBranches(remoteName);
             const branchModal = new GeneralModal(this, {
                 options: branches,
-                placeholder:
-                    t("Select or create a new remote branch by typing its name and selecting it"),
+                placeholder: t(
+                    "Select or create a new remote branch by typing its name and selecting it"
+                ),
             });
             const branch = await branchModal.openAndGetResult();
             if (branch == undefined) return;

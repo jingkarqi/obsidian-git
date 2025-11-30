@@ -30,34 +30,167 @@ import type {
     SyncMethod,
 } from "src/types";
 import { convertToRgb, formatMinutes, rgbToString } from "src/utils";
+import { LANGUAGE_OPTIONS, type LanguageSetting } from "src/lang/i18n";
 
 const FORMAT_STRING_REFERENCE_URL =
     "https://momentjs.com/docs/#/parsing/string-format/";
 const LINE_AUTHOR_FEATURE_WIKI_LINK =
     "https://publish.obsidian.md/git-doc/Line+Authoring";
+const PLACEHOLDER_PATTERN = /\{([\w-]+)\}/g;
+let settingTranslationsEnabled = false;
+
+type TemplateTranslation = {
+    regex: RegExp;
+    placeholders: string[];
+    translation: string;
+};
+
+type PlaceholderMatch = {
+    token: string;
+    index: number;
+    length: number;
+};
+
+const exactTranslations = new Map<string, string>();
+const templateTranslations: TemplateTranslation[] = [];
+
+for (const [key, value] of Object.entries(zhCn)) {
+    const normalizedKey = normalizeKey(key);
+    if (!normalizedKey) continue;
+
+    const placeholderMatches = getPlaceholderMatches(normalizedKey);
+    if (placeholderMatches.length === 0) {
+        exactTranslations.set(normalizedKey, value);
+        continue;
+    }
+
+    templateTranslations.push({
+        regex: buildTemplateRegex(normalizedKey, placeholderMatches),
+        placeholders: placeholderMatches.map((match) => match.token),
+        translation: value,
+    });
+}
 
 class Setting extends ObsidianSetting {
     constructor(containerEl: HTMLElement) {
         super(containerEl);
     }
     setName(name: string | DocumentFragment): this {
-        if (typeof name === "string") {
-            const translated = zhCn[name];
-            if (translated) {
+        if (settingTranslationsEnabled && typeof name === "string") {
+            const translated = translateSettingText(name);
+            if (translated !== undefined) {
                 return super.setName(translated);
             }
         }
         return super.setName(name);
     }
     setDesc(desc: string | DocumentFragment): this {
-        if (typeof desc === "string") {
-            const translated = zhCn[desc];
-            if (translated) {
+        if (settingTranslationsEnabled && typeof desc === "string") {
+            const translated = translateSettingText(desc);
+            if (translated !== undefined) {
                 return super.setDesc(translated);
             }
         }
         return super.setDesc(desc);
     }
+}
+
+function configureSettingTranslations(language: LanguageSetting): void {
+    settingTranslationsEnabled = language === "zh-cn";
+}
+
+function translateSettingText(text: string): string | undefined {
+    if (!settingTranslationsEnabled) return undefined;
+    const normalized = normalizeKey(text);
+    if (!normalized) return undefined;
+
+    const direct = exactTranslations.get(normalized);
+    if (direct !== undefined) {
+        return direct;
+    }
+
+    for (const template of templateTranslations) {
+        const match = template.regex.exec(normalized);
+        if (!match) continue;
+
+        const groups = match.groups ?? {};
+        let translated = template.translation;
+        for (const placeholder of template.placeholders) {
+            const rawValue = groups[placeholder] ?? "";
+            translated = translated.replace(
+                new RegExp(`\\{${placeholder}\\}`, "g"),
+                localizePlaceholderValue(rawValue)
+            );
+        }
+        return translated;
+    }
+
+    return undefined;
+}
+
+function localizePlaceholderValue(value: string): string {
+    const normalizedValue = normalizeKey(value);
+    if (!normalizedValue) return value;
+
+    const direct = exactTranslations.get(normalizedValue);
+    if (direct !== undefined) {
+        return direct;
+    }
+
+    const minutesMatch = normalizedValue.match(/^(\d+)\s+minute(s)?$/i);
+    if (minutesMatch) {
+        return `${minutesMatch[1]} 分钟`;
+    }
+
+    return value;
+}
+
+function buildTemplateRegex(
+    template: string,
+    placeholderMatches: PlaceholderMatch[]
+): RegExp {
+    let lastIndex = 0;
+    let pattern = "";
+    const seenPlaceholders = new Set<string>();
+
+    for (const placeholder of placeholderMatches) {
+        pattern += escapeRegExp(template.slice(lastIndex, placeholder.index));
+        if (seenPlaceholders.has(placeholder.token)) {
+            pattern += `\\k<${placeholder.token}>`;
+        } else {
+            pattern += `(?<${placeholder.token}>.+?)`;
+            seenPlaceholders.add(placeholder.token);
+        }
+        lastIndex = placeholder.index + placeholder.length;
+    }
+
+    pattern += escapeRegExp(template.slice(lastIndex));
+    return new RegExp(`^${pattern}$`);
+}
+
+function normalizeKey(text: string): string {
+    return text.replace(/\s+/g, " ").trim();
+}
+
+function escapeRegExp(text: string): string {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getPlaceholderMatches(text: string): PlaceholderMatch[] {
+    const matches: PlaceholderMatch[] = [];
+    text.replace(
+        PLACEHOLDER_PATTERN,
+        (match: string, token: string, offset: number) => {
+            const prevChar = text[offset - 1] ?? "";
+            const nextChar = text[offset + match.length] ?? "";
+            if (prevChar === "{" || nextChar === "}") {
+                return match;
+            }
+            matches.push({ token, index: offset, length: match.length });
+            return match;
+        }
+    );
+    return matches;
 }
 
 export class ObsidianGitSettingsTab extends PluginSettingTab {
@@ -76,6 +209,7 @@ export class ObsidianGitSettingsTab extends PluginSettingTab {
     display(): void {
         const { containerEl } = this;
         const plugin: ObsidianGit = this.plugin;
+        configureSettingTranslations(plugin.settings.language);
 
         let commitOrSync: string;
         if (plugin.settings.differentIntervalCommitAndPush) {
@@ -87,6 +221,25 @@ export class ObsidianGitSettingsTab extends PluginSettingTab {
         const gitReady = plugin.gitReady;
 
         containerEl.empty();
+
+        const languageSetting = new Setting(containerEl)
+            .setName("Language")
+            .setDesc("Select the language used for the plugin UI.");
+        languageSetting.addDropdown((dropdown) => {
+            for (const option of LANGUAGE_OPTIONS) {
+                dropdown.addOption(option.value, option.label);
+            }
+            dropdown.setValue(plugin.settings.language);
+            dropdown.onChange(async (value) => {
+                const language = value as LanguageSetting;
+                plugin.settings.language = language;
+                configureSettingTranslations(language);
+                plugin.applyLanguagePreference();
+                await plugin.saveSettings();
+                this.refreshDisplayWithDelay();
+            });
+        });
+
         if (!gitReady) {
             containerEl.createEl("p", {
                 text: "Git is not ready. When all settings are correct you can configure commit-sync, etc.",
